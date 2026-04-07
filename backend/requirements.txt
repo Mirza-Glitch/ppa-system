@@ -1,0 +1,10 @@
+Flask
+Flask-SQLAlchemy
+Flask-Security-Too
+Flask-Cors
+Flask-Mail
+celery
+redis
+bcrypt
+passlib
+python-dotenv
