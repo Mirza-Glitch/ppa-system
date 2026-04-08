@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h3>Available Placement Drives</h3>
+        {% for drive in drives %}
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ drive.job_title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ drive.company_name }}</h6>
+                <p class="card-text">{{ drive.description }}</p>
+                <p><strong>Criteria:</strong> {{ drive.criteria }}</p>
+                <form action="/apply/{{ drive.id }}" method="POST">
+                    <button type="submit" class="btn btn-primary">Apply Now</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        <h3>My Applications</h3>
+        <ul class="list-group">
+            {% for app in my_applications %}
+            <li class="list-group-group-item d-flex justify-content-between align-items-center">
+                {{ app.drive_title }}
+                <span class="badge bg-info rounded-pill">{{ app.status }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

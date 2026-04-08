@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Company Dashboard</h2>
+    <a href="/create-drive" class="btn btn-primary">+ Create New Drive</a>
+</div>
+
+<div class="row">
+    {% for drive in my_drives %}
+    <div class="col-md-6 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ drive.job_title }}</h5>
+                <p class="text-muted small">Status: {{ drive.status }}</p>
+                <hr>
+                <h6>Applicants:</h6>
+                <ul class="list-group list-group-flush">
+                    {% for app in drive.applications %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ app.student_name }}
+                        <div>
+                            <span class="badge bg-secondary me-2">{{ app.status }}</span>
+                            <a href="/update-status/{{ app.id }}/Shortlisted" class="btn btn-sm btn-outline-info">Shortlist</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

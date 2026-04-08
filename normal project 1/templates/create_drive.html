@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white">
+                <h4 class="mb-0">Create Placement Drive</h4>
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ url_for('create_drive') }}" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Job Title</label>
+                        <input type="text" name="job_title" class="form-control" placeholder="e.g. Software Engineer" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Eligibility Criteria</label>
+                        <input type="text" name="criteria" class="form-control" placeholder="e.g. CGPA > 7.0, No Backlogs" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Submit for Approval</button>
+                        <a href="{{ url_for('comp_dash') }}" class="btn btn-link text-muted mt-2">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
